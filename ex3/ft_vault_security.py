@@ -1,7 +1,8 @@
 import typing
 
 
-def secure_archive(filename :str, action: str, content : str ="") -> typing.Tuple[bool, str]:
+def secure_archive(filename: str, action: str,
+                   content: str = "") -> typing.Tuple[bool, str]:
     try:
         if action == "r":
             with open(filename, 'r') as file:
@@ -14,12 +15,13 @@ def secure_archive(filename :str, action: str, content : str ="") -> typing.Tupl
         else:
             raise Exception("Invalid Action")
     except Exception as e:
-        return(False, str(e))
+        return (False, str(e))
 
 
 def main() -> None:
     print("=== Cyber Archives Security ===")
     print(secure_archive("test.txt", "w", "hello"))
-    
+
+
 if __name__ == '__main__':
     main()

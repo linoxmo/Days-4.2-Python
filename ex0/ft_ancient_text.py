@@ -17,7 +17,7 @@ def main() -> None:
     except PermissionError as e:
         print(f"Error opening file {file}: ", e)
         return
-    
+
     print(O_file.read())
     O_file.close()
     print(f"File {file} closed.")

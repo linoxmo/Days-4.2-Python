@@ -6,21 +6,17 @@ def main() -> None:
     if ((len(sys.argv)) != 2):
         print("Usage: ft_ancient_text.py <file>")
         return
-    
+
     file = sys.argv[1]
     print("=== Cyber Archives Recovery & Preservation ===")
     print(f"Accessing file '{file}'")
-
     try:
         O_file: typing.IO[str] = open(file, 'r')
-    except FileNotFoundError as e:
-        print(f"Error opening file '{file}': {e}")
-        return
-    except PermissionError as e:
+    except Exception as e:
         print(f"Error opening file '{file}': {e}")
         return
 
-    data = O_file.read()
+    data: str = O_file.read()
     O_file.close()
     print("---\n")
     print(data)
