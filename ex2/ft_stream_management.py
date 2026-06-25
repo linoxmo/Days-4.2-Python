@@ -19,21 +19,25 @@ def main() -> None:
     data: str = file.read()
     print(data)
     data += "#"
-    data.replace("\n", "#\n")
     file.close()
     print(f"The file {file_name} was closed correctly")
-    print("Transorm data : \n---\n", data)
+    print("Transorm data : \n---\n", data.replace("\n", "#\n"))
     print("Veuillez ecrire quelque chose dans le terminal :")
     new_file = sys.stdin.readline()
     print(f"Saving data to '{new_file}'")
     try:
         new = open(new_file, "w")
+        new.write(data.replace("\n", "#\n"))
     except PermissionError as e:
         print(f"[STDERR] Error opening file '{file_name}': "
               f"{e}", file=sys.stderr)
         print("Data not saved")
         return
-
+    except Exception as e:
+        print(f"[STDERR] Other Error for '{file_name}': "
+              f"{e}", file=sys.stderr)
+        print("Data not saved")
+        return
     new.close()
     print(f"Data saved in file '{new_file}'")
 
